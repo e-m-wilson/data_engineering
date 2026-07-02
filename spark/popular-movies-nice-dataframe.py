@@ -2,12 +2,11 @@ from pyspark.sql import SparkSession
 from pyspark.sql import functions as func
 from pyspark.sql.types import StructType, StructField, IntegerType, LongType, StringType
 from pyspark.sql.functions import udf
-import codecs
 
 def loadMovieNames() -> dict[int, str]:
     movieNames = {}
     # CHANGE THIS TO THE PATH TO YOUR u.ITEM FILE:
-    with codecs.open("./ml-100k/u.item", "r", encoding='ISO-8859-1', errors='ignore') as f:
+    with open("./ml-100k/u.item", "r", encoding='ISO-8859-1', errors='ignore') as f:
         for line in f:
             fields = line.split('|')
             movieNames[int(fields[0])] = fields[1]

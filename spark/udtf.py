@@ -68,8 +68,6 @@ data = [("Learning #AI with #ML",), ("Explore #DataScience",), ("No hashtags her
 df = spark.createDataFrame(data, ["text"])
 
 # Apply UDF in a DataFrame query
-
-# 
 df.selectExpr("text", "count_hashtags(text) AS num_hashtags").show()
 
 # same output as using selectExpr()
