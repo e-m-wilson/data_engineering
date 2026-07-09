@@ -65,7 +65,6 @@ movies = spark.read \
       .schema(moviesSchema) \
       .csv("./ml-100k/u.data")
 
-
 ratings = movies.select("userId", "movieId", "rating")
 
 # Emit every movie rated together by the same user.
