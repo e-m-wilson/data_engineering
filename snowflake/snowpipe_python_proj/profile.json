@@ -1,0 +1,7 @@
+{
+    "user":"admin",
+    "account":"DVZTGXN-QF07017",
+    "url":"DVZTGXN-QF07017.snowflakecomputing.com",
+    "private_key_file":"rsa_key.p8",
+    "role":"accountadmin"
+}
