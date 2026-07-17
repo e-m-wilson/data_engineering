@@ -20,7 +20,7 @@ TABLE     = "TRANSACTIONS"
 PIPE      = f"{TABLE}-STREAMING"
 
 # 10 transactions per minute = 1 every 6 seconds
-INTERVAL_SECONDS = 6
+INTERVAL_SECONDS = 0.001
 
 MERCHANTS   = ["Amazon", "Tesco", "Uber", "Netflix", "Deliveroo", "Apple", "ASOS", "Spotify"]
 CURRENCIES  = ["GBP", "USD", "EUR"]

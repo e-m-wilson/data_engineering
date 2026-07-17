@@ -4,13 +4,13 @@
 -- openssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub 
 -- Register the public key against the user for key-pair authentication
 -- you get this value by opening up the pub file that we generated 
-ALTER USER admin SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmSonl212KsKyoJS6bpgq
-EfyEtL/jQWS4Sy0KDfkEsxpoG/xHhpit3jOAacYKKj8mojHv63jtq8RjLW5auIHi
-4H71n9QNjbsM5MkKhFwVFIGqI5nzjxN9NnChyqcc0vklLsSD3L8PsZrzCDic9Z92
-iuMiyC6thKdx74t5IYgxDV9SoaZoxauq5TpPYCciK7ggLk43dQbwR3phxjMf1X/N
-szNIgoiBIDK7tJXue4bhuZvfzkzPFf+hhQrwAIRnyj4uB/JdvdJzkKWQ4FwOx/Ta
-qoR7L0DSYlPDZ4DIyhSXcVSkzj9+JAjYs8AiuInlclwsoNQ+Xk7qMbFtyJb7AykF
-jwIDAQAB';
+ALTER USER admin SET RSA_PUBLIC_KEY='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApHhh96Eqv5TPAjM/5qDF
+BJ7ZAAajGYCo9BeI3VRgyFWTYlVluoMtQi9onXI/4NVUi3tenajxgx+2MgLDerz+
+jBbCTfG7K0W2SWhIrNZR0HnXVBdt961MdWP3FApYgJkEef/3sIm2HNiHQVW7+Adr
+ToeYP5AYUs/D+I9unDocqRQLZlxhofRsPEEw1i5+SpzCNouGnmT1ThhhfBv3rVlH
+hsUonAwtymn5vpigethFffwBLptDWRs34beTAQV3eZBOJ7YhonmXn/bXJbNMXWBA
+uU9IHTfIbSBKYNoZjltdGMaTWPMZxLts42Vg0jq+x7NU7yGKM44g0k4lS8WcDVjk
+AwIDAQAB';
 
 -- Step 2
 -- Create the database and schema to house our streaming data
@@ -54,3 +54,7 @@ CREATE OR REPLACE TABLE TRANSACTIONS_DB.TRANSACTIONS_SCHEMA.TRANSACTIONS (
 -- Step 5
 -- Query the table ordered by sequence to verify data is landing correctly
 SELECT * FROM TRANSACTIONS_DB.TRANSACTIONS_SCHEMA.TRANSACTIONS ORDER BY SEQUENCE DESC;
+
+
+-- Step 6
+DROP DATABASE TRANSACTIONS_DB;
