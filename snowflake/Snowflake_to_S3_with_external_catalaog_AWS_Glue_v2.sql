@@ -191,10 +191,10 @@ DESC CATALOG INTEGRATION my_catalog;
 -- 6. Create Iceberg Table
 ---------------------------------------------------------------
 
-CREATE OR REPLACE ICEBERG TABLE titanic
+CREATE OR REPLACE ICEBERG TABLE customers
     EXTERNAL_VOLUME = 'my_external_volume'
     CATALOG = 'my_catalog'
-    CATALOG_TABLE_NAME = 'titanic';
+    CATALOG_TABLE_NAME = 'customers';
 
 ---------------------------------------------------------------
 -- 7. Query Data
