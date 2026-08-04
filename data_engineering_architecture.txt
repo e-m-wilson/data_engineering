@@ -1,29 +1,45 @@
-architecture
+Architecture
 
-How does pyspark + EMR interact with Snowflake?
-Snowflake loads from S3 using COPY INTO
-or Spark writes directly into Snowflake using the Snowflake Spark Connector
 
-                Raw Data Sources
+       Raw Data Sources land in s3 - Bronze
         (S3, Kafka, APIs, Databases)
                     |
-                    v
+                    V
             Amazon S3 (Data Lake)
                     |
-                    v
-         Amazon EMR (PySpark Jobs)
-      - Cleansing
-      - Validation
-      - Feature Engineering
-      - Large-scale joins
-      - ML preprocessing
-                    |
-      --------------------------------
-      |                              |
-      v                              v
-   Curated S3                  Snowflake
-(Data Lake Tables)          Analytics Warehouse
-                                    |
-                                    |
-                           BI / Dashboards
-                     (Tableau, Power BI, Looker)
+                    V
+         Amazon EMR (PySpark Jobs) - (Batch Processing) 				Amazon MWAA - managed workflows for apache airflow 
+		  - Cleansing													 Airflow detects raw data in s3 with s3keysensor 
+		  - Validation													 launches EMR job to produce silver data in snowflake 
+		  - Feature Engineering
+		  - Large-scale joins
+		  - ML preprocessing										Airflow on a schedule runs a consumer to 
+                    |												  get kafka topic data and populate into snowflake 
+					|
+					|
+			  Kafka - (stream processing) - Amazon MSK
+			  JS file etc. that talks to fastAPI
+			  which in turn launches your producer;
+					|
+					V
+			     Snowflake 
+				    |
+					|
+					V 
+				Power BI 
+				
+				
+				Bronze
+					↓
+				EMR/Spark
+					↓
+				Silver Iceberg tables (S3)
+					↓
+				Snowflake
+					↓
+				dbt / Dynamic Tables
+					↓
+				Gold dimensional model (in snowflake)
+					↓
+				Power BI (consumes from snowflake to build visualizations)
+				
