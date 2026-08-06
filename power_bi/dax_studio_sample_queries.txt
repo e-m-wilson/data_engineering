@@ -1,0 +1,44 @@
+EVALUATE
+'Sales Data 2022'
+
+EVALUATE
+TOPN(
+    10,
+    'Sales Data 2022'
+)
+
+EVALUATE
+ROW(
+    "Total Sales Rows",
+    COUNTROWS('Sales Data 2022')
+)
+
+EVALUATE
+ROW(
+    "Total Quantity",
+    SUM('Sales Data 2022'[orderQuantity])
+)
+
+ RUNNING AN EXISTING MEASURE:
+EVALUATE
+ROW(
+    "Total Orders",
+    [Total Orders]
+)
+
+EVALUATE
+SUMMARIZE(
+    'Sales Data 2022',
+    'Sales Data 2022'[customerKey],
+    "Orders",
+        [Total Orders]
+)
+
+
+EVALUATE
+SUMMARIZE(
+    'Sales Data',
+    YEAR('Sales Data'[orderDate]),
+    "Orders",
+        [totalOrders]
+)
